@@ -1,0 +1,83 @@
+// @import "./public/Poppins-Medium.ttf";
+$background-main: rgb(44, 59, 64);
+$background-wrapper :rgb(200, 200, 195);
+$font-family-body :'Poppins',
+sans-serif;
+$background-btn: rgb(65, 79, 87);
+$color-text: #fff;
+$color-text-logo: rgb(255, 0, 0);
+$max-width: ( "else": 98.4%, "sm": 97.4%, "md": 95.4%, "lg": 93.4%, "xl" :91.4%);
+@mixin reponsive($min-width) {
+    @media screen and (min-width: $min-width) {
+        @content;
+    }
+}
+
+@mixin displayFlex($justify, $align, $row: true) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    @if $row {
+        flex-direction: row;
+    }
+    @else {
+        flex-direction: column;
+    }
+}
+
+@mixin styleBtn {
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    color: $color-text;
+    font: {
+        family: 'Poppins', sans-serif;
+        size: 62.5%;
+    }
+}
+
+.header {
+    background-color: $background-main;
+    height: 6em;
+    padding: .5em;
+    box-sizing: border-box;
+    &-container {
+        @include displayFlex(unset, center, true);
+        margin: 0 auto;
+        width: map-get($max-width, "xl");
+    }
+    &-search {
+        @include styleBtn;
+        margin-left: auto;
+        padding: .6em 1em;
+        background-color: $background-btn;
+        border-radius: 15px;
+        color: rgba( 255, 255, 255, .7);
+        input {
+            outline: none;
+            background-color: unset;
+            border: none;
+            text-transform: capitalize;
+            color: rgba( 255, 255, 255, .7);
+        }
+    }
+    .logo {
+        font: {
+            size: 3em !important;
+        }
+        color: $color-text-logo;
+        margin: 0;
+        word-spacing: -8px;
+        text-transform: uppercase;
+        span {
+            color: $color-text;
+        }
+    }
+}
